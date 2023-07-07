@@ -6,11 +6,11 @@ import numpy as np
 import pandas as pd
 from geopy.geocoders import Nominatim
     
-model_url = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_asia_V1/1'
-# model_url = 'on_device_vision_classifier_landmarks_classifier_asia_V1_1'
+model_url = 'https://tfhub.dev/google/on_device_vision/classifier/landmarks_classifier_africa_V1/1'
+# model_url = 'on_device_vision_classifier_landmarks_classifier_africa_V1_1'
 
-# label_url = 'https://www.gstatic.com/aihub/tfhub/labelmaps/landmarks_classifier_asia_V1_label_map.csv'
-labels = 'landmarks_classifier_asia_V1_label_map.csv'
+# label_url = 'https://www.gstatic.com/aihub/tfhub/labelmaps/landmarks_classifier_africa_V1_label_map.csv'
+labels = 'landmarks_classifier_africa_V1_label_map'
 df = pd.read_csv(labels)
 labels = dict(zip(df.id, df.name))
 
