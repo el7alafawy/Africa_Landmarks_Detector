@@ -3,4 +3,4 @@ numpy
 Pillow
 pandas
 geopy
-tensorflow==2.6.0
+tensorflow==2.12.0
