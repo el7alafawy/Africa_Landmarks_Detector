@@ -55,7 +55,6 @@ def get_map(loc):
 
 def run(model):
     st. set_page_config(layout="wide")
-
     st.title("Landmarks Guide")
     img = PIL.Image.open('logo.jpeg')
     img = img.resize((256,256))
@@ -68,6 +67,7 @@ def run(model):
         st.image(img)
         if st.button('Choose'):
             model = "Asia"
+            st.session_state.model = model
     with col2:
         st.header("Europe 🥐")
         img = PIL.Image.open('./images/Europe.jpg')
@@ -111,11 +111,16 @@ def run(model):
     if model != "None":
         st.subheader("Searching landmarks in " + model)
         img_file = st.file_uploader("Choose your Image", type=['png', 'jpg'])
-        if img_file is not None:
-            save_image_path = './Uploaded_Images/' + img_file.name
+        cam_file = st.camera_input("Or take it fresh from camera")
+        if cam_file is not None or img_file is not None:
+            if cam_file is not None :
+                ch_img = cam_file
+            else:
+                ch_img = img_file
+            save_image_path = './Uploaded_Images/' + ch_img.name
             
             with open(save_image_path, "wb") as f:
-                f.write(img_file.getbuffer())
+                f.write(ch_img.getbuffer())
 
             #  Selecting Model & Labels
             if model == "Australia":
