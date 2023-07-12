@@ -111,7 +111,11 @@ def run(model):
     if model != "None":
         st.subheader("Searching landmarks in " + model)
         img_file = st.file_uploader("Choose your Image", type=['png', 'jpg'])
-        cam_file = st.camera_input("Or take it fresh from camera")
+        cam_chk = st.checkbox("Use camera")
+        if cam_chk:
+            cam_file = st.camera_input("Fresh from camera")
+        else:
+            cam_file = None
         if cam_file is not None or img_file is not None:
             if cam_file is not None :
                 ch_img = cam_file
